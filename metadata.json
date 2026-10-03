@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "KWin/Script",
+    "KPlugin": {
+        "Id": "application-shortcuts",
+        "Name": "Application Shortcuts",
+        "Description": "Focus Firefox, Google Chrome, Emacs, Konsole and Thunderbird with Meta shortcuts",
+        "Icon": "preferences-system-windows",
+        "Version": "1.0.0",
+        "License": "MIT"
+    },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js"
+}
