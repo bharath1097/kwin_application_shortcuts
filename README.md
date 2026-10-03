@@ -1,6 +1,10 @@
 # Application Shortcuts
 
-KWin 6 script installed in `~/.local/share/kwin/scripts/application-shortcuts`.
+A KWin 6 script for switching to open application windows with keyboard shortcuts.
+It identifies applications by their window class, resource name, or desktop file
+name rather than their window titles.
+
+## Default shortcuts
 
 | Shortcut | Application |
 | --- | --- |
@@ -16,25 +20,22 @@ shortcut while it is focused cycles through its windows. If the application has
 no open windows, the shortcut does nothing. Emacs must have a graphical window;
 Emacs running inside a terminal is identified as the terminal application.
 
-## Enable
+## Installation and setup
 
-1. Open System Settings → Keyboard → Shortcuts → KWin. Remove Meta+T from
-   **Toggle Tiles Editor**, then apply. This shortcut is already assigned on this machine.
+1. Place the script files in `~/.local/share/kwin/scripts/application-shortcuts/`,
+   with `metadata.json` at the top level and `contents/code/main.js` beneath it.
 2. Open System Settings → Window Management → KWin Scripts, enable
    **Application Shortcuts**, and apply.
-3. Under Keyboard → Shortcuts → KWin, check the five **Switch to …** actions
-   and assign the keys above if any defaults were blocked by a conflict.
+3. Under Keyboard → Shortcuts → KWin, find the **Switch to …** actions and
+   check their assignments. If a default shortcut conflicts with another action,
+   remove that assignment or choose a different shortcut.
 
-To enable from a normal desktop terminal instead:
+Alternatively, enable the installed script from a terminal in your KDE desktop session:
 
 ```sh
 kwriteconfig6 --file kwinrc --group Plugins --key application-shortcutsEnabled true
 qdbus6 org.kde.KWin /KWin reconfigure
 ```
-
-Resolve the Meta+T conflict in System Settings first. The Codex environment cannot
-reach the desktop D-Bus session or write `~/.config`, so activation must happen
-in your desktop session.
 
 ## Customize or disable
 
@@ -44,4 +45,4 @@ KDE; change those in System Settings → Keyboard → Shortcuts → KWin.
 After changing the script, disable it and apply, then enable it and apply again.
 Disable **Application Shortcuts** in KWin Scripts to stop using it.
 
-API reference: https://develop.kde.org/docs/plasma/kwin/api/
+API reference: [KWin scripting API](https://develop.kde.org/docs/plasma/kwin/api/).
